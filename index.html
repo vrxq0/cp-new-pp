@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Carnaval Perfume | Luxury Fragrance Atelier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0A192F;
+            color: #F5F2EB;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .hero-title,
+        .quiz-title,
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+        .gold-accent {
+            color: #C5A572;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #0A192F;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: #C5A572;
+            border-radius: 10px;
+        }
+        /* تأثير الهيرو المتحرك */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .btn-primary {
+            background: #C5A572;
+            color: #0A192F;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary:hover {
+            background: #b3905a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(197, 165, 114, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #C5A572;
+            color: #C5A572;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background: #C5A572;
+            color: #0A192F;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.2);
+            flex-wrap: wrap;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(16px);
+            padding: 12px 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #F5F2EB;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #C5A572;
+        }
+        
+        .search-wrapper {
+            flex: 1;
+            max-width: 300px;
+            margin: 0 1rem;
+        }
+        
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            transition: all 0.2s;
+        }
+        
+        .search-box:focus-within {
+            border-color: #C5A572;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .search-box input {
+            background: none;
+            border: none;
+            color: #F5F2EB;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+        
+        .search-box input::placeholder {
+            color: #A0B3C9;
+        }
+        
+        .search-box i {
+            color: #C5A572;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        
+        .nav-icons button {
+            background: none;
+            border: none;
+            color: #F5F2EB;
+            font-size: 1.3rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .nav-icons button:hover {
+            color: #C5A572;
+        }
+        
+        .cart-count,
+        .wishlist-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #C5A572;
+            color: #0A192F;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 30px;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #F5F2EB;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        
+        .lang-btn.active {
+            color: #C5A572;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 6%;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.85) 0%, rgba(15, 42, 63, 0.9) 100%), url('images/islam.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            color: #CDD7E6;
+            max-width: 500px;
+            margin: 1rem 0 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem 5%;
+        }
+        
+        .product-card {
+            background: rgba(25, 45, 65, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+            border-color: rgba(197, 165, 114, 0.7);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.3rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        
+        .product-brand {
+            font-size: 0.8rem;
+            color: #C5A572;
+        }
+        
+        .product-price {
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+        }
+        
+        .wishlist-icon {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #A0B3C9;
+        }
+        
+        .wishlist-icon.active {
+            color: #C5A572;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: #102B3F;
+            border-radius: 32px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            border-top: 4px solid #C5A572;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.3);
+            padding-bottom: 0.8rem;
+        }
+        /* تحسين مستطيل القصة بتأثيرات جميلة */
+        
+        .story-section {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, #0F2A3F 0%, #0A192F 100%);
+            margin: 2rem 0;
+        }
+        
+        .story-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 40px;
+            padding: 2rem;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            backdrop-filter: blur(4px);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-8px);
+            border-color: #C5A572;
+            box-shadow: 0 20px 35px -12px rgba(197, 165, 114, 0.2);
+        }
+        
+        .story-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-content p {
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: #CDD7E6;
+            line-height: 1.6;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #C5A572;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            color: #CDD7E6;
+            font-size: 0.9rem;
+        }
+        
+        .discount-badge {
+            background: rgba(197, 165, 114, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: 500;
+            border: 1px dashed #C5A572;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #C5A572;
+            color: #0A192F;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        
+        .instagram-link:hover {
+            background: #b3905a;
+            transform: scale(1.02);
+        }
+        
+        .footer {
+            background: #05121F;
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(197, 165, 114, 0.2);
+        }
+        
+        .animated-wave {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #C5A572, #EADBC6, #C5A572);
+            background-size: 200% 100%;
+            animation: waveMove 6s linear infinite;
+            margin-top: 1rem;
+        }
+        
+        @keyframes waveMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+        
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quiz-container {
+            max-width: 700px;
+            width: 90%;
+            background: #102B3F;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #C5A572;
+        }
+        
+        .answer-btn {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 60px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .answer-btn i {
+            color: #C5A572;
+        }
+        
+        .answer-btn.selected {
+            background: #C5A572;
+            color: #0A192F;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 6px;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            background: #C5A572;
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.4s ease;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C5A572;
+            color: #0A192F;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            z-index: 3000;
+            animation: fadeOut 2s forwards;
+        }
+        
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        @media (max-width: 760px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 5%;
+            }
+            .search-wrapper {
+                max-width: 100%;
+                margin: 8px 0;
+                order: 3;
+                width: 100%;
+            }
+            .nav-links {
+                order: 1;
+            }
+            .nav-icons {
+                order: 2;
+            }
+            .stats-container {
+                gap: 1.5rem;
+            }
+            .hero {
+                min-height: 85vh;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar" id="navbar">
+            <div class="logo">CARNAVAL <span class="gold-accent">PERFUME</span></div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link" data-section="home">الرئيسية</a>
+                <a href="#products" class="nav-link" data-section="products">المجموعة</a>
+                <a href="#story" class="nav-link" data-section="story">القصة</a>
+            </div>
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="ابحث عن عطر...">
+                </div>
+            </div>
+            <div class="nav-icons">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button id="wishlistBtnNav"><i class="far fa-heart"></i><span class="wishlist-count" id="wishlistCount">0</span></button>
+                <button id="cartBtnNav"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>حيث يصبح العطر <br><span class="gold-accent">هوية</span></h1>
+            <p>اكتشف أرقى العطور العالمية والنيش المصممة خصيصاً للخبراء.</p>
+            <button class="btn-primary" id="quizHeroBtn"><i class="fas fa-magic"></i> اكتشف عطرك المثالي</button>
+        </div>
+    </section>
+
+    <div id="products" class="product-grid"></div>
+
+    <section id="story" class="story-section">
+        <div class="story-card">
+            <div class="story-content">
+                <h2 class="gold-accent">قصة Carnaval Perfume</h2>
+                <p>انطلقنا من شغف عميق بالإبداع العطري، نقدم لك أرقى العطور العالمية والنيش. نؤمن بأن العطر هو التوقيع غير المرئي للروح، حيث نمزج بين التقاليد العريقة والفن الحديث لنقدم لك رحلة حسية لا تُضاهى.</p>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">عطر حصري</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">أصلي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">عميل واثق</div>
+                    </div>
+                </div>
+                <div class="discount-badge">🎁 خصم 20% على أول طلب باستخدام كود: <strong>CARNAVAL20</strong></div>
+                <a href="https://www.instagram.com/carnaval.perfume?igsh=MXIxN3lqcm16c2x0Ng==" target="_blank" class="instagram-link">
+                    <i class="fab fa-instagram"></i> تابعنا على إنستقرام
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Carnaval Perfume © 2025 — فن العطور الفاخرة</p>
+        <div class="animated-wave"></div>
+    </footer>
+
+    <!-- مودالات السلة والمفضلة والاختبار -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <h3>سلة التسوق <i class="fas fa-shopping-bag gold-accent"></i></h3>
+            <div id="cartItemsList"></div>
+            <div id="cartTotal"></div><button id="proceedCheckout" class="btn-primary">إتمام الشراء</button><button id="closeCartModal" class="btn-outline" style="margin-top:1rem">إغلاق</button></div>
+    </div>
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content">
+            <h3>المفضلة <i class="fas fa-heart gold-accent"></i></h3>
+            <div id="wishlistItems"></div><button id="closeWishlistModal" class="btn-outline">إغلاق</button></div>
+    </div>
+    <div id="quizModal" class="quiz-modal">
+        <div id="quizContainer" class="quiz-container"></div>
+    </div>
+
+    <script>
+        // ----------------------------- قاعدة البيانات بالأسعار الجديدة (دينار جزائري) والأسماء المطلوبة -----------------------------
+        const products = [{
+            id: 1,
+            name: "Imagination",
+            brand: "Louis Vuitton",
+            category: "Fresh",
+            price: 7000,
+            popularity: 98,
+            image: "images/islam15.jpg",
+            images: ["images/islam15.jpg", "images/islam155.jpg"],
+            desc_ar: "انتعاش حمضي نابض بالحياة.",
+            notes: "Orange, Bergamot, Citron",
+            rating: 4.8,
+            reviews: 124,
+            similar: [2, 5]
+        }, {
+            id: 2,
+            name: "Pacific Chill",
+            brand: "Louis Vuitton",
+            category: "Fresh",
+            price: 7000,
+            popularity: 94,
+            image: "images/islam12.jpg",
+            images: ["images/islam12.jpg", "images/islam122.jpg"],
+            desc_ar: "مزيج منعش من التين والحمضيات.",
+            notes: "Fig, Lemon, Blackcurrant",
+            rating: 4.7,
+            reviews: 98,
+            similar: [1, 8]
+        }, {
+            id: 3,
+            name: "Le Beau Le Parfum",
+            brand: "Jean Paul Gaultier",
+            category: "Romantic",
+            price: 5500,
+            popularity: 92,
+            image: "images/islam13.jpg",
+            images: ["images/islam13.jpg", "images/islam133.jpg", "images/islam1333.jpg"],
+            desc_ar: "خشبي حلو مع الفانيليا وجوز الهند.",
+            notes: "Vanilla, Iris, Tonka",
+            rating: 4.6,
+            reviews: 87,
+            similar: [4, 13]
+        }, {
+            id: 4,
+            name: "Le Beau Paradise Garden",
+            brand: "Jean Paul Gaultier",
+            category: "Fresh",
+            price: 6000,
+            popularity: 88,
+            image: "images/islam14.jpg",
+            images: ["images/islam14.jpg", "images/islam144.jpg", "images/islam1444.jpg"],
+            desc_ar: "انتعاش استوائي، أخضر ومائي.",
+            notes: "Bergamot, Palm Tree, Vetiver",
+            rating: 4.5,
+            reviews: 72,
+            similar: [2, 3]
+        }, {
+            id: 5,
+            name: "Le Male Le Parfum",
+            brand: "Jean Paul Gaultier",
+            category: "Strong",
+            price: 5500,
+            popularity: 96,
+            image: "images/islam4.jpg",
+            images: ["images/islam4.jpg", "images/islam44.jpg", "images/islam444.jpg", "images/islam4444.jpg"],
+            desc_ar: "هيل وخزامى مكثفان.",
+            notes: "Cardamom, Lavender, Iris",
+            rating: 4.9,
+            reviews: 210,
+            similar: [6, 7]
+        }, {
+            id: 6,
+            name: "Le Male Elixir",
+            brand: "Jean Paul Gaultier",
+            category: "Strong",
+            price: 6500,
+            popularity: 91,
+            image: "images/islam6.jpg",
+            images: ["images/islam6.jpg", "images/islam66.jpg", "images/islam666.jpg"],
+            desc_ar: "تركيز إكسير مع العسل والتبغ.",
+            notes: "Honey, Tobacco, Vanilla",
+            rating: 4.8,
+            reviews: 156,
+            similar: [5, 7]
+        }, {
+            id: 7,
+            name: "Ultra Male",
+            brand: "Jean Paul Gaultier",
+            category: "Romantic",
+            price: 4500,
+            popularity: 95,
+            image: "images/islam7.jpg",
+            images: ["images/islam7.jpg", "images/islam77.jpg", "images/islam777.jpg"],
+            desc_ar: "كمثرى حلوة وفانيليا.",
+            notes: "Pear, Vanilla, Bergamot",
+            rating: 4.7,
+            reviews: 189,
+            similar: [3, 13]
+        }, {
+            id: 8,
+            name: "Sauvage Elixir",
+            brand: "Dior",
+            category: "Strong",
+            price: 6500,
+            popularity: 99,
+            image: "images/islam011.jpg",
+            images: ["images/islam011.jpg", "images/islam0011.jpg", "images/islam00011.jpg"],
+            desc_ar: "إكسير خشبي حار خام.",
+            notes: "Cinnamon, Nutmeg, Sandalwood",
+            rating: 4.9,
+            reviews: 324,
+            similar: [5, 9]
+        }, {
+            id: 9,
+            name: "Dior Homme Intense",
+            brand: "Dior",
+            category: "Romantic",
+            price: 5000,
+            popularity: 93,
+            image: "images/islam3.jpg",
+            images: ["images/islam3.jpg", "images/islam33.jpg", "images/islam333.jpg", "images/islam3333.jpg"],
+            desc_ar: "سوسن وجلد راقي.",
+            notes: "Iris, Pear, Leather",
+            rating: 4.8,
+            reviews: 203,
+            similar: [3, 7]
+        }, {
+            id: 10,
+            name: "Stronger With You Intensely",
+            brand: "Emporio Armani",
+            category: "Romantic",
+            price: 5000,
+            popularity: 94,
+            image: "images/islam1.jpg",
+            images: ["images/islam1.jpg", "images/islam11.jpg", "images/islam111.jpg"],
+            desc_ar: "كستناء دافئة وفانيليا.",
+            notes: "Chestnut, Vanilla, Pink Pepper",
+            rating: 4.7,
+            reviews: 178,
+            similar: [11, 3]
+        }, {
+            id: 11,
+            name: "Stronger With You Absolutely",
+            brand: "Emporio Armani",
+            category: "Strong",
+            price: 5500,
+            popularity: 90,
+            image: "images/islam10.jpg",
+            images: ["images/islam10.jpg", "images/islam100.jpg", "images/islam1000.jpg"],
+            desc_ar: "جلد كحولي مكثف.",
+            notes: "Rum, Leather, Woods",
+            rating: 4.6,
+            reviews: 145,
+            similar: [10, 8]
+        }, {
+            id: 12,
+            name: "Althaïr",
+            brand: "Parfums de Marly",
+            category: "Luxury",
+            price: 7000,
+            popularity: 97,
+            image: "images/islam2.jpg",
+            images: ["images/islam2.jpg", "images/islam22.jpg", "images/islam222.jpg", "images/islam2222.jpg"],
+            desc_ar: "فانيليا شهية مع القرفة.",
+            notes: "Vanilla, Cinnamon, Cedar",
+            rating: 4.9,
+            reviews: 267,
+            similar: [13, 14]
+        }, {
+            id: 13,
+            name: "Layton Exclusif",
+            brand: "Parfums de Marly",
+            category: "Luxury",
+            price: 7000,
+            popularity: 98,
+            image: "images/islam9.jpg",
+            images: ["images/islam9.jpg", "images/islam99.jpg", "images/islam999.jpg"],
+            desc_ar: "عود تفاح غريب.",
+            notes: "Oud, Apple, Violet",
+            rating: 4.9,
+            reviews: 289,
+            similar: [12, 14]
+        }, {
+            id: 14,
+            name: "Angels' Share",
+            brand: "Kilian Paris",
+            category: "Luxury",
+            price: 6500,
+            popularity: 99,
+            image: "images/islam8.jpg",
+            images: ["images/islam8.jpg", "images/islam88.jpg", "images/islam888.jpg"],
+            desc_ar: "كونياك وقرفة.",
+            notes: "Cognac, Cinnamon, Oak",
+            rating: 4.9,
+            reviews: 312,
+            similar: [12, 13]
+        }, {
+            id: 15,
+            name: "Uomo Born In Roma Intense",
+            brand: "Valentino",
+            category: "Romantic",
+            price: 5500,
+            popularity: 89,
+            image: "images/islam5.jpg",
+            images: ["images/islam5.jpg", "images/islam55.jpg", "images/islam555.jpg"],
+            desc_ar: "فانيليا مالحة وفيتيفر.",
+            notes: "Vanilla, Sea Salt, Vetiver",
+            rating: 4.5,
+            reviews: 101,
+            similar: [10, 3]
+        }];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let currentLang = 'ar';
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function saveWishlist() {
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+            renderProducts();
+        }
+
+        function updateCartBadge() {
+            document.getElementById('cartCount').innerText = cart.reduce((s, i) => s + i.qty, 0);
+        }
+
+        function updateWishlistBadge() {
+            document.getElementById('wishlistCount').innerText = wishlist.length;
+        }
+
+        function showToast(msg) {
+            let t = document.createElement('div');
+            t.className = 'toast';
+            t.innerText = msg;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 2000);
+        }
+
+        function addToCart(productId) {
+            let p = products.find(pr => pr.id === productId);
+            let existing = cart.find(i => i.id === productId);
+            if (existing) existing.qty++;
+            else cart.push({...p,
+                qty: 1
+            });
+            saveCart();
+            showToast(`تم إضافة ${p.name} إلى السلة`);
+        }
+
+        function toggleWishlist(pid) {
+            if (wishlist.includes(pid)) wishlist = wishlist.filter(id => id !== pid);
+            else wishlist.push(pid);
+            saveWishlist();
+            renderProducts();
+            showToast(wishlist.includes(pid) ? "تمت الإضافة إلى المفضلة" : "تمت الإزالة من المفضلة");
+        }
+
+        function updateCartUI() {
+            const cartDiv = document.getElementById('cartItemsList');
+            if (!cart.length) {
+                cartDiv.innerHTML = '<p>السلة فارغة</p>';
+                document.getElementById('cartTotal').innerHTML = '';
+                return;
+            }
+            cartDiv.innerHTML = cart.map(item => `<div class="cart-item"><span>${item.name} x${item.qty}</span><span>${item.price} د.ج</span><div><button class="btn-outline" style="padding:4px 12px;" data-id="${item.id}" data-action="inc">+</button><button class="btn-outline" style="padding:4px 12px;" data-id="${item.id}" data-action="dec">-</button><button class="btn-outline" data-id="${item.id}" data-action="remove">Remove</button></div></div>`).join('');
+            document.getElementById('cartTotal').innerHTML = `<hr><strong>الإجمالي: ${cart.reduce((s,i)=>s+i.price*i.qty,0)} د.ج</strong>`;
+            document.querySelectorAll('[data-action="inc"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let id = parseInt(btn.dataset.id);
+                    let it = cart.find(i => i.id === id);
+                    it.qty++;
+                    saveCart();
+                    updateCartUI();
+                })
+            });
+            document.querySelectorAll('[data-action="dec"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let id = parseInt(btn.dataset.id);
+                    let it = cart.find(i => i.id === id);
+                    if (it.qty > 1) it.qty--;
+                    else cart = cart.filter(i => i.id !== id);
+                    saveCart();
+                    updateCartUI();
+                })
+            });
+            document.querySelectorAll('[data-action="remove"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let id = parseInt(btn.dataset.id);
+                    cart = cart.filter(i => i.id !== id);
+                    saveCart();
+                    updateCartUI();
+                })
+            });
+        }
+
+        function renderProducts() {
+            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm) || p.brand.toLowerCase().includes(searchTerm));
+            const grid = document.getElementById('products');
+            if (!filtered.length) {
+                grid.innerHTML = '<div style="text-align:center; padding:3rem; color:#A0B3C9;">لا توجد منتجات مطابقة للبحث</div>';
+                return;
+            }
+            grid.innerHTML = filtered.map(p => `
+      <div class="product-card" data-id="${p.id}">
+        <img class="product-img" src="${p.image}" onerror="this.src='https://via.placeholder.com/400?text=Image+Not+Found'">
+        <div class="product-info">
+          <div class="product-name">${p.name}</div>
+          <div class="product-brand">${p.brand}</div>
+          <div class="product-price">${p.price} د.ج</div>
+          <div class="card-actions">
+            <button class="btn-primary add-to-cart-btn" data-id="${p.id}" style="padding:6px 18px;">أضف إلى السلة</button>
+            <div class="wishlist-icon ${wishlist.includes(p.id)?'active':''}" data-id="${p.id}"><i class="fas fa-heart"></i></div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                addToCart(parseInt(btn.dataset.id));
+            }));
+            document.querySelectorAll('.wishlist-icon').forEach(icon => icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleWishlist(parseInt(icon.dataset.id));
+            }));
+            document.querySelectorAll('.product-card').forEach(card => card.addEventListener('click', (e) => {
+                if (!e.target.closest('.add-to-cart-btn') && !e.target.closest('.wishlist-icon')) {
+                    window.location.href = `product.html?id=${card.dataset.id}`;
+                }
+            }));
+        }
+
+        // Quiz (نفس الكود السابق)
+        const quizQuestions = [{
+            text_en: "What vibe do you seek?",
+            text_ar: "ما الأجواء التي تبحث عنها؟",
+            icon: "fa-meteor",
+            options: [{
+                text_en: "Fresh & Energetic",
+                text_ar: "منعش وحيوي",
+                cat: "Fresh",
+                icon: "fa-water"
+            }, {
+                text_en: "Romantic & Sweet",
+                text_ar: "رومانسي وحلو",
+                cat: "Romantic",
+                icon: "fa-heart"
+            }, {
+                text_en: "Bold & Strong",
+                text_ar: "جريء وقوي",
+                cat: "Strong",
+                icon: "fa-crown"
+            }, {
+                text_en: "Exclusive Luxury",
+                text_ar: "فاخر وحصري",
+                cat: "Luxury",
+                icon: "fa-gem"
+            }]
+        }, {
+            text_en: "Which occasion?",
+            text_ar: "أي مناسبة؟",
+            icon: "fa-calendar-alt",
+            options: [{
+                text_en: "Daily/Casual",
+                text_ar: "يومي",
+                cat: "Fresh",
+                icon: "fa-sun"
+            }, {
+                text_en: "Date Night",
+                text_ar: "ليلة رومانسية",
+                cat: "Romantic",
+                icon: "fa-moon"
+            }, {
+                text_en: "Business/Confidence",
+                text_ar: "عمل/ثقة",
+                cat: "Strong",
+                icon: "fa-briefcase"
+            }, {
+                text_en: "Gala/Events",
+                text_ar: "حفلات راقية",
+                cat: "Luxury",
+                icon: "fa-star"
+            }]
+        }, {
+            text_en: "Preferred scent family?",
+            text_ar: "عائلة الروائح المفضلة؟",
+            icon: "fa-seedling",
+            options: [{
+                text_en: "Citrus/Aquatic",
+                text_ar: "حمضي/مائي",
+                cat: "Fresh",
+                icon: "fa-fish"
+            }, {
+                text_en: "Vanilla/Gourmand",
+                text_ar: "فانيليا/حلو",
+                cat: "Romantic",
+                icon: "fa-cake-candles"
+            }, {
+                text_en: "Oud/Woody",
+                text_ar: "عود/خشبي",
+                cat: "Strong",
+                icon: "fa-tree"
+            }, {
+                text_en: "Amber/Spices",
+                text_ar: "عنبر/توابل",
+                cat: "Luxury",
+                icon: "fa-fire"
+            }]
+        }];
+        let quizStep = 0,
+            quizScores = {
+                Fresh: 0,
+                Romantic: 0,
+                Strong: 0,
+                Luxury: 0
+            },
+            quizSelected = [];
+
+        function renderQuiz() {
+            let q = quizQuestions[quizStep];
+            let optsHtml = q.options.map((opt, idx) => `<div class="answer-btn" data-cat="${opt.cat}" data-idx="${idx}"><i class="fas ${opt.icon}"></i> ${currentLang==='en'?opt.text_en:opt.text_ar}</div>`).join('');
+            let container = document.getElementById('quizContainer');
+            container.innerHTML = `<div style="display:flex; justify-content:space-between;"><h3><i class="fas ${q.icon} gold-accent"></i> ${currentLang==='en'?'Find Your Scent':'اكتشف عطرك المثالي'}</h3><button id="closeQuizBtn" style="background:none; border:none; color:#C5A572; font-size:1.5rem;">&times;</button></div><div class="progress-bar"><div class="progress-fill" style="width:${(quizStep+1)/quizQuestions.length*100}%"></div></div><div class="question-text" style="font-size:1.4rem; margin:1rem 0;">${currentLang==='en'?q.text_en:q.text_ar}</div><div id="quizOptions">${optsHtml}</div><div class="quiz-nav" style="margin-top:2rem; display:flex; justify-content:space-between;"><button id="quizPrevBtn" ${quizStep===0?'disabled':''} class="btn-outline">${currentLang==='en'?'Previous':'السابق'}</button><button id="quizNextBtn" class="btn-primary">${quizStep===quizQuestions.length-1?(currentLang==='en'?'Reveal Result':'النتيجة'):(currentLang==='en'?'Next':'التالي')}</button></div>`;
+            document.getElementById('closeQuizBtn').onclick = () => document.getElementById('quizModal').style.display = 'none';
+            document.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.onclick = () => {
+                    document.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    quizSelected[quizStep] = btn.dataset.cat;
+                };
+            });
+            document.getElementById('quizPrevBtn').onclick = () => {
+                if (quizStep > 0) {
+                    quizStep--;
+                    renderQuiz();
+                }
+            };
+            document.getElementById('quizNextBtn').onclick = () => {
+                    if (!quizSelected[quizStep]) {
+                        showToast(currentLang === 'en' ? 'Select an option' : 'اختر خياراً');
+                        return;
+                    }
+                    quizScores[quizSelected[quizStep]]++;
+                    if (quizStep === quizQuestions.length - 1) {
+                        let topCat = Object.keys(quizScores).reduce((a, b) => quizScores[a] > quizScores[b] ? a : b);
+                        let recommended = products.filter(p => p.category === topCat).slice(0, 4);
+                        container.innerHTML = `<div><h2>${currentLang==='en'?'Your Signature Style':'أسلوبك المميز'}: <span class="gold-accent">${topCat}</span></h2><p>${currentLang==='en'?'Based on your answers, we recommend:':'بناءً على إجاباتك، نوصي:'}</p><div style="display:flex; flex-wrap:wrap; gap:1rem;">${recommended.map(p=>`<div style="background:rgba(255,255,255,0.05); border-radius:20px; padding:0.5rem; width:130px; text-align:center;"><img src="${p.image}" width="80" style="border-radius:12px;"><div>${p.name}</div><button class="btn-primary" style="margin-top:5px;padding:4px 12px;" data-id="${p.id}">Add</button></div>`).join('')}</div><button id="closeQuizRes" class="btn-outline" style="margin-top:1rem;">${currentLang==='en'?'Close':'إغلاق'}</button></div>`;
+        document.querySelectorAll('[data-id]').forEach(btn=>btn.addEventListener('click',(e)=>{ addToCart(parseInt(btn.dataset.id)); showToast('Added to cart'); }));
+        document.getElementById('closeQuizRes').onclick = ()=>document.getElementById('quizModal').style.display='none';
+      } else { quizStep++; renderQuiz(); }
+    };
+  }
+  function openQuiz() { quizStep=0; quizScores={ Fresh:0, Romantic:0, Strong:0, Luxury:0 }; quizSelected=[]; renderQuiz(); document.getElementById('quizModal').style.display='flex'; }
+
+  // Event Listeners
+  document.getElementById('searchInput').addEventListener('input', renderProducts);
+  document.getElementById('cartBtnNav').addEventListener('click',()=>{ updateCartUI(); document.getElementById('cartModal').style.display='flex'; });
+  document.getElementById('closeCartModal').addEventListener('click',()=>document.getElementById('cartModal').style.display='none');
+  document.getElementById('proceedCheckout').addEventListener('click',()=>{
+    if(cart.length===0){ showToast('السلة فارغة'); return; }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'checkout.html';
+  });
+  document.getElementById('wishlistBtnNav').addEventListener('click',()=>{
+    let wishlistItems = products.filter(p=>wishlist.includes(p.id));
+    const container = document.getElementById('wishlistItems');
+    if(wishlistItems.length === 0) { container.innerHTML = '<p>المفضلة فارغة</p>'; }
+    else {
+      container.innerHTML = wishlistItems.map(p=>`<div style="display:flex; justify-content:space-between; margin:8px 0;">${p.name} - ${p.price} د.ج <button class="btn-outline" onclick="addToCart(${p.id}); document.getElementById('wishlistModal').style.display='none';">أضف إلى السلة</button></div>`).join('');
+    }
+    document.getElementById('wishlistModal').style.display='flex';
+  });
+  document.getElementById('closeWishlistModal').addEventListener('click',()=>document.getElementById('wishlistModal').style.display='none');
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+  document.getElementById('quizHeroBtn').addEventListener('click', openQuiz);
+
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    if(lang === 'ar') document.body.classList.add('rtl'); else document.body.classList.remove('rtl');
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    renderProducts();
+    if(lang === 'ar') {
+      document.querySelector('.hero-content h1').innerHTML = 'حيث يصبح العطر <br><span class="gold-accent">هوية</span>';
+      document.querySelector('.hero-content p').innerHTML = 'اكتشف أرقى العطور العالمية والنيش المصممة خصيصاً للخبراء.';
+      document.getElementById('quizHeroBtn').innerHTML = '<i class="fas fa-magic"></i> اكتشف عطرك المثالي';
+      document.querySelector('#searchInput').placeholder = 'ابحث عن عطر...';
+    } else {
+      document.querySelector('.hero-content h1').innerHTML = 'Where Scent <br>Becomes <span class="gold-accent">Identity</span>';
+      document.querySelector('.hero-content p').innerHTML = 'Discover the finest niche and designer fragrances curated for the connoisseur.';
+      document.getElementById('quizHeroBtn').innerHTML = '<i class="fas fa-magic"></i> Find Your Scent';
+      document.querySelector('#searchInput').placeholder = 'Search perfume...';
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if(link.getAttribute('data-section') === 'home') link.innerText = lang==='en'?'Home':'الرئيسية';
+      if(link.getAttribute('data-section') === 'products') link.innerText = lang==='en'?'Collection':'المجموعة';
+      if(link.getAttribute('data-section') === 'story') link.innerText = lang==='en'?'Story':'القصة';
+    });
+    document.querySelector('.story-content h2').innerHTML = lang==='en'?'The Story of Carnaval Perfume':'قصة Carnaval Perfume';
+    document.querySelector('.story-content p').innerHTML = lang==='en'?'Born from a passion for olfactory excellence, Carnaval Perfume curates the world\'s most exquisite fragrances. We believe scent is the invisible signature of the soul, blending timeless tradition with modern artistry to offer an unparalleled sensory journey.':'انطلقنا من شغف عميق بالإبداع العطري، نقدم لك أرقى العطور العالمية والنيش. نؤمن بأن العطر هو التوقيع غير المرئي للروح، حيث نمزج بين التقاليد العريقة والفن الحديث لنقدم لك رحلة حسية لا تُضاهى.';
+    document.querySelector('.discount-badge strong').innerHTML = 'CARNAVAL20';
+    document.querySelector('.instagram-link').innerHTML = `<i class="fab fa-instagram"></i> ${lang==='en'?'Follow us on Instagram':'تابعنا على إنستقرام'}`;
+  }
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sectionId = link.getAttribute('data-section');
+      const element = document.getElementById(sectionId);
+      if(element) element.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  setLanguage('ar');
+  renderProducts();
+  updateCartBadge();
+  updateWishlistBadge();
+  window.addToCart = addToCart;
+    </script>
+</body>
+
+</html>
