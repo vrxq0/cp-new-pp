@@ -25,13 +25,11 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0A192F; }
     ::-webkit-scrollbar-thumb { background: #C5A572; border-radius: 10px; }
-    
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .hero-content { animation: fadeInUp 1s ease-out forwards; }
-    
     .btn-primary {
       background: #C5A572;
       color: #0A192F;
@@ -190,7 +188,6 @@
     .story-content h2 { font-size: 1.6rem; }
     .stats-container { gap: 1.5rem; }
     .stat-number { font-size: 2rem; }
-    /* باقي الأنماط كما هي */
     .product-card { background: rgba(25, 45, 65, 0.7); backdrop-filter: blur(8px); border-radius: 24px; overflow: hidden; border: 1px solid rgba(197,165,114,0.3); transition: transform 0.3s; cursor: pointer; }
     .product-card:hover { transform: translateY(-6px); border-color: rgba(197,165,114,0.7); }
     .product-info { padding: 1rem; }
@@ -369,7 +366,9 @@
     document.querySelectorAll('.add-to-cart-btn').forEach(btn=>btn.addEventListener('click',(e)=>{ e.stopPropagation(); addToCart(parseInt(btn.dataset.id)); }));
     document.querySelectorAll('.wishlist-icon').forEach(icon=>icon.addEventListener('click',(e)=>{ e.stopPropagation(); toggleWishlist(parseInt(icon.dataset.id)); }));
     document.querySelectorAll('.product-card').forEach(card=>card.addEventListener('click',(e)=>{
-      if(!e.target.closest('.add-to-cart-btn') && !e.target.closest('.wishlist-icon')) window.location.href = `product.html?id=${card.dataset.id}`;
+      if(!e.target.closest('.add-to-cart-btn') && !e.target.closest('.wishlist-icon')) {
+        window.location.href = `product.html?id=${card.dataset.id}`;
+      }
     }));
   }
 
