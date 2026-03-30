@@ -60,12 +60,12 @@
       background: #C5A572;
       color: #0A192F;
     }
-    /* شريط علوي محسن للهواتف مع الحفاظ على الميزات */
+    /* شريط علوي عادي للحاسوب */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 5%;
+      padding: 20px 5%;
       background: rgba(10, 25, 47, 0.7);
       backdrop-filter: blur(12px);
       position: fixed;
@@ -76,40 +76,35 @@
       transition: all 0.3s ease;
       border-bottom: 1px solid rgba(197, 165, 114, 0.2);
       flex-wrap: wrap;
-      gap: 10px;
     }
     .navbar.scrolled {
       background: rgba(10, 25, 47, 0.95);
       backdrop-filter: blur(16px);
-      padding: 8px 5%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 12px 5%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-    .logo { font-size: 1.4rem; font-weight: 800; }
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-      order: 1;
-    }
+    .logo { font-size: 1.8rem; font-weight: 800; }
+    .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
       color: #F5F2EB;
       text-decoration: none;
       font-weight: 500;
       transition: 0.2s;
-      font-size: 0.85rem;
     }
-    .search-wrapper {
-      flex: 1;
-      min-width: 180px;
-      order: 3;
-    }
+    .nav-links a:hover { color: #C5A572; }
+    .search-wrapper { flex: 1; max-width: 300px; margin: 0 1rem; }
     .search-box {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 40px;
-      padding: 0.4rem 0.8rem;
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
-      gap: 6px;
-      border: 1px solid rgba(197,165,114,0.3);
+      gap: 8px;
+      border: 1px solid rgba(197, 165, 114, 0.3);
+    }
+    .search-box:focus-within {
+      border-color: #C5A572;
+      background: rgba(255, 255, 255, 0.15);
     }
     .search-box input {
       background: none;
@@ -117,32 +112,30 @@
       color: #F5F2EB;
       outline: none;
       width: 100%;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
-    .nav-icons {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      order: 2;
-    }
+    .search-box input::placeholder { color: #A0B3C9; }
+    .search-box i { color: #C5A572; }
+    .nav-icons { display: flex; gap: 1.8rem; align-items: center; }
     .nav-icons button {
       background: none;
       border: none;
       color: #F5F2EB;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       cursor: pointer;
       position: relative;
     }
+    .nav-icons button:hover { color: #C5A572; }
     .cart-count, .wishlist-count {
       position: absolute;
       top: -8px;
-      right: -10px;
+      right: -12px;
       background: #C5A572;
       color: #0A192F;
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       border-radius: 50%;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,9 +143,9 @@
     }
     .lang-switch {
       display: flex;
-      gap: 6px;
-      background: rgba(255,255,255,0.1);
-      padding: 3px 8px;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
       border-radius: 30px;
     }
     .lang-btn {
@@ -161,71 +154,340 @@
       color: #F5F2EB;
       font-weight: 500;
       cursor: pointer;
-      font-size: 0.7rem;
+      font-size: 0.85rem;
     }
     .lang-btn.active { color: #C5A572; }
-    /* تحسين الهيرو للهواتف */
+    /* زر الهامبورجر (يظهر فقط على الهواتف) */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #F5F2EB;
+      font-size: 1.8rem;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+    /* القائمة الجانبية (للأجهزة المحمولة) */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background: #102B3F;
+      backdrop-filter: blur(16px);
+      z-index: 1100;
+      transition: 0.3s ease;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    }
+    .side-menu.open {
+      right: 0;
+    }
+    .side-menu .close-menu {
+      background: none;
+      border: none;
+      color: #C5A572;
+      font-size: 1.8rem;
+      align-self: flex-start;
+      cursor: pointer;
+    }
+    .side-menu .side-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .side-menu .side-nav-links a {
+      color: #F5F2EB;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(197,165,114,0.3);
+    }
+    .side-menu .side-search-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 40px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(197,165,114,0.3);
+    }
+    .side-menu .side-search-box input {
+      background: none;
+      border: none;
+      color: #F5F2EB;
+      outline: none;
+      width: 100%;
+    }
+    .side-menu .side-lang-switch {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .side-menu .side-wishlist {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    /* تنسيقات عامة */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 80px 5% 40px;
+      padding: 0 6%;
       background: linear-gradient(135deg, rgba(10, 25, 47, 0.85) 0%, rgba(15, 42, 63, 0.9) 100%), url('images/islam.jpg');
       background-size: cover;
       background-position: center;
     }
-    .hero-content h1 { font-size: 2.5rem; line-height: 1.3; margin-bottom: 1rem; }
-    .hero-content p { font-size: 1rem; margin: 1rem 0; }
+    .hero-content h1 { font-size: 4.2rem; line-height: 1.2; margin-bottom: 1rem; }
+    .hero-content p { color: #CDD7E6; max-width: 500px; margin: 1rem 0 2rem; font-size: 1.1rem; }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem 5%;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 3rem 5%;
     }
-    .product-img { height: 240px; }
-    .story-section { padding: 2rem 5%; margin: 1rem 0; }
-    .story-card { padding: 1.5rem; }
-    .story-content h2 { font-size: 1.6rem; }
-    .stats-container { gap: 1.5rem; }
-    .stat-number { font-size: 2rem; }
-    .product-card { background: rgba(25, 45, 65, 0.7); backdrop-filter: blur(8px); border-radius: 24px; overflow: hidden; border: 1px solid rgba(197,165,114,0.3); transition: transform 0.3s; cursor: pointer; }
-    .product-card:hover { transform: translateY(-6px); border-color: rgba(197,165,114,0.7); }
-    .product-info { padding: 1rem; }
-    .product-name { font-size: 1.1rem; }
-    .card-actions button { padding: 5px 14px; font-size: 0.8rem; }
-    .modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(10,25,47,0.95); backdrop-filter: blur(12px); z-index:2000; display:none; align-items:center; justify-content:center; }
-    .modal-content { background:#102B3F; border-radius:28px; max-width:700px; width:90%; max-height:85vh; overflow-y:auto; padding:1.5rem; border-top:4px solid #C5A572; }
-    .cart-item { display: flex; justify-content: space-between; margin: 0.8rem 0; border-bottom: 1px solid rgba(197,165,114,0.3); padding-bottom: 0.5rem; }
-    .quiz-modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(10,25,47,0.98); backdrop-filter: blur(16px); z-index:2500; display:none; align-items:center; justify-content:center; }
-    .quiz-container { max-width: 700px; width:90%; background:#102B3F; border-radius:32px; padding:1.5rem; border:1px solid #C5A572; }
-    .answer-btn { background: rgba(255,255,255,0.08); padding: 0.8rem; margin:0.4rem; border-radius:60px; text-align:center; cursor:pointer; border:1px solid rgba(197,165,114,0.3); display:flex; align-items:center; justify-content:center; gap:8px; }
-    .answer-btn.selected { background:#C5A572; color:#0A192F; }
-    .progress-bar { background: rgba(255,255,255,0.2); height:6px; border-radius:6px; margin:1rem 0; }
-    .progress-fill { background:#C5A572; height:100%; border-radius:6px; transition:width 0.4s; }
-    .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #C5A572; color: #0A192F; padding: 10px 20px; border-radius: 40px; font-weight: bold; z-index: 3000; animation: fadeOut 2s forwards; }
-    @keyframes fadeOut { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
-    .discount-badge { background: rgba(197,165,114,0.2); padding: 0.5rem 1rem; border-radius: 40px; display: inline-block; margin: 0.8rem 0; font-weight: 500; border: 1px dashed #C5A572; font-size: 0.85rem; }
-    .instagram-link { display: inline-flex; align-items: center; gap: 6px; background: #C5A572; color: #0A192F; padding: 0.6rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; transition: 0.2s; font-size: 0.85rem; }
-    .footer { background: #05121F; padding: 1.5rem 5%; text-align: center; border-top: 1px solid rgba(197,165,114,0.2); font-size: 0.8rem; }
-    .animated-wave { width: 100%; height: 3px; background: linear-gradient(90deg, #C5A572, #EADBC6, #C5A572); background-size: 200% 100%; animation: waveMove 6s linear infinite; margin-top: 0.8rem; }
-    @keyframes waveMove { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-    /* تحسين للشاشات المتوسطة والكبيرة */
-    @media (min-width: 768px) {
-      .navbar { flex-wrap: nowrap; gap: 1rem; padding: 20px 5%; }
-      .logo { font-size: 1.8rem; }
-      .nav-links { order: 0; gap: 2rem; }
-      .nav-links a { font-size: 1rem; }
-      .search-wrapper { order: 0; max-width: 300px; }
-      .search-box input { font-size: 0.9rem; }
-      .nav-icons { order: 0; gap: 1.8rem; }
-      .nav-icons button { font-size: 1.3rem; }
-      .lang-btn { font-size: 0.85rem; }
-      .hero-content h1 { font-size: 4.2rem; }
-      .hero { padding: 0 6%; }
-      .product-grid { gap: 2rem; padding: 3rem 5%; }
-      .product-img { height: 280px; }
-      .story-section { padding: 4rem 5%; }
-      .story-card { padding: 2rem; }
+    .product-card {
+      background: rgba(25, 45, 65, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(197, 165, 114, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+      border-color: rgba(197, 165, 114, 0.7);
+    }
+    .product-img { width: 100%; height: 280px; object-fit: cover; }
+    .product-info { padding: 1.3rem; }
+    .product-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .product-brand { font-size: 0.8rem; color: #C5A572; }
+    .product-price { font-weight: 600; margin: 8px 0; }
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .wishlist-icon { cursor: pointer; font-size: 1.2rem; color: #A0B3C9; }
+    .wishlist-icon.active { color: #C5A572; }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 25, 47, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #102B3F;
+      border-radius: 32px;
+      max-width: 700px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      border-top: 4px solid #C5A572;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+      border-bottom: 1px solid rgba(197, 165, 114, 0.3);
+      padding-bottom: 0.8rem;
+    }
+    .story-section {
+      padding: 4rem 5%;
+      background: linear-gradient(135deg, #0F2A3F 0%, #0A192F 100%);
+      margin: 2rem 0;
+    }
+    .story-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 40px;
+      padding: 2rem;
+      border: 1px solid rgba(197, 165, 114, 0.3);
+      backdrop-filter: blur(4px);
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-8px);
+      border-color: #C5A572;
+      box-shadow: 0 20px 35px -12px rgba(197, 165, 114, 0.2);
+    }
+    .story-content h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .story-content p { max-width: 700px; margin: 0 auto 2rem auto; color: #CDD7E6; line-height: 1.6; }
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .stat-item { text-align: center; min-width: 150px; }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #C5A572;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-label { color: #CDD7E6; font-size: 0.9rem; }
+    .discount-badge {
+      background: rgba(197, 165, 114, 0.2);
+      padding: 0.8rem 1.5rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 1rem 0;
+      font-weight: 500;
+      border: 1px dashed #C5A572;
+    }
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #C5A572;
+      color: #0A192F;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .instagram-link:hover { background: #b3905a; transform: scale(1.02); }
+    .footer {
+      background: #05121F;
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 1px solid rgba(197, 165, 114, 0.2);
+    }
+    .animated-wave {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #C5A572, #EADBC6, #C5A572);
+      background-size: 200% 100%;
+      animation: waveMove 6s linear infinite;
+      margin-top: 1rem;
+    }
+    @keyframes waveMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .quiz-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 25, 47, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .quiz-container {
+      max-width: 700px;
+      width: 90%;
+      background: #102B3F;
+      border-radius: 32px;
+      padding: 2rem;
+      border: 1px solid #C5A572;
+    }
+    .answer-btn {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      margin: 0.5rem;
+      border-radius: 60px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid rgba(197, 165, 114, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .answer-btn i { color: #C5A572; }
+    .answer-btn.selected {
+      background: #C5A572;
+      color: #0A192F;
+    }
+    .progress-bar {
+      background: rgba(255, 255, 255, 0.2);
+      height: 6px;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    .progress-fill {
+      background: #C5A572;
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+    .toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #C5A572;
+      color: #0A192F;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      z-index: 3000;
+      animation: fadeOut 2s forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+    /* الهواتف: تعديل الشريط وإظهار الهامبورجر وإخفاء العناصر الأخرى */
+    @media (max-width: 768px) {
+      .navbar .nav-links,
+      .navbar .search-wrapper,
+      .navbar .lang-switch,
+      .navbar #wishlistBtnNav {
+        display: none;
+      }
+      .navbar {
+        justify-content: space-between;
+        padding: 12px 5%;
+      }
+      .hamburger {
+        display: block;
+        order: 0;
+      }
+      .logo {
+        font-size: 1.4rem;
+        order: 1;
+        margin: 0 auto;
+      }
+      .nav-icons {
+        order: 2;
+      }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero { min-height: 85vh; padding-top: 80px; }
+      .product-grid { gap: 1.5rem; padding: 2rem 5%; }
+      .product-img { height: 240px; }
+      .story-section { padding: 2rem 5%; }
+      .story-card { padding: 1.5rem; }
+      .stats-container { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -233,6 +495,7 @@
 
 <header>
   <div class="navbar" id="navbar">
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
     <div class="logo">CARNAVAL <span class="gold-accent">PERFUME</span></div>
     <div class="nav-links">
       <a href="#home" class="nav-link" data-section="home">الرئيسية</a>
@@ -255,6 +518,27 @@
     </div>
   </div>
 </header>
+
+<!-- القائمة الجانبية للهواتف -->
+<div id="sideMenu" class="side-menu">
+  <button class="close-menu" id="closeSideMenu"><i class="fas fa-times"></i></button>
+  <div class="side-nav-links">
+    <a href="#home" class="side-nav-link" data-section="home">الرئيسية</a>
+    <a href="#products" class="side-nav-link" data-section="products">المجموعة</a>
+    <a href="#story" class="side-nav-link" data-section="story">القصة</a>
+  </div>
+  <div class="side-search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" id="sideSearchInput" placeholder="ابحث عن عطر...">
+  </div>
+  <div class="side-lang-switch">
+    <button class="lang-btn side-lang" data-lang="ar">AR</button>
+    <button class="lang-btn side-lang" data-lang="en">EN</button>
+  </div>
+  <div class="side-wishlist" id="sideWishlistBtn">
+    <i class="far fa-heart"></i> <span>المفضلة</span> <span id="sideWishlistCount">0</span>
+  </div>
+</div>
 
 <section id="home" class="hero">
   <div class="hero-content">
@@ -289,7 +573,7 @@
   <div class="animated-wave"></div>
 </footer>
 
-<!-- مودالات -->
+<!-- مودالات السلة والمفضلة والاختبار -->
 <div id="cartModal" class="modal"><div class="modal-content"><h3>سلة التسوق <i class="fas fa-shopping-bag gold-accent"></i></h3><div id="cartItemsList"></div><div id="cartTotal"></div><button id="proceedCheckout" class="btn-primary">إتمام الشراء</button><button id="closeCartModal" class="btn-outline" style="margin-top:1rem">إغلاق</button></div></div>
 <div id="wishlistModal" class="modal"><div class="modal-content"><h3>المفضلة <i class="fas fa-heart gold-accent"></i></h3><div id="wishlistItems"></div><button id="closeWishlistModal" class="btn-outline">إغلاق</button></div></div>
 <div id="quizModal" class="quiz-modal"><div id="quizContainer" class="quiz-container"></div></div>
@@ -318,10 +602,20 @@
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   let currentLang = 'ar';
 
+  // حفظ واسترجاع البيانات
   function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); updateCartBadge(); }
   function saveWishlist() { localStorage.setItem('wishlist', JSON.stringify(wishlist)); updateWishlistBadge(); renderProducts(); }
-  function updateCartBadge() { document.getElementById('cartCount').innerText = cart.reduce((s,i)=>s+i.qty,0); }
-  function updateWishlistBadge() { document.getElementById('wishlistCount').innerText = wishlist.length; }
+  function updateCartBadge() { 
+    const total = cart.reduce((s,i)=>s+i.qty,0);
+    document.getElementById('cartCount').innerText = total;
+    const sideCount = document.getElementById('sideWishlistCount');
+    if(sideCount) sideCount.innerText = wishlist.length;
+  }
+  function updateWishlistBadge() { 
+    document.getElementById('wishlistCount').innerText = wishlist.length;
+    const sideCount = document.getElementById('sideWishlistCount');
+    if(sideCount) sideCount.innerText = wishlist.length;
+  }
   function showToast(msg) { let t = document.createElement('div'); t.className='toast'; t.innerText=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); }
   function addToCart(productId) {
     let p = products.find(pr=>pr.id===productId);
@@ -348,7 +642,7 @@
     let searchTerm = document.getElementById('searchInput').value.toLowerCase();
     let filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm) || p.brand.toLowerCase().includes(searchTerm));
     const grid = document.getElementById('products');
-    if (!filtered.length) { grid.innerHTML = '<div style="text-align:center; padding:2rem; color:#A0B3C9;">لا توجد منتجات مطابقة للبحث</div>'; return; }
+    if (!filtered.length) { grid.innerHTML = '<div style="text-align:center; padding:3rem; color:#A0B3C9;">لا توجد منتجات مطابقة للبحث</div>'; return; }
     grid.innerHTML = filtered.map(p => `
       <div class="product-card" data-id="${p.id}">
         <img class="product-img" src="${p.image}" onerror="this.src='https://via.placeholder.com/400?text=Image+Not+Found'">
@@ -372,7 +666,7 @@
     }));
   }
 
-  // Quiz
+  // الاختبار التفاعلي (كما هو مع تصحيح الأخطاء)
   const quizQuestions = [
     { text_en: "What vibe do you seek?", text_ar: "ما الأجواء التي تبحث عنها؟", icon: "fa-meteor", options: [{text_en:"Fresh & Energetic",text_ar:"منعش وحيوي",cat:"Fresh",icon:"fa-water"},{text_en:"Romantic & Sweet",text_ar:"رومانسي وحلو",cat:"Romantic",icon:"fa-heart"},{text_en:"Bold & Strong",text_ar:"جريء وقوي",cat:"Strong",icon:"fa-crown"},{text_en:"Exclusive Luxury",text_ar:"فاخر وحصري",cat:"Luxury",icon:"fa-gem"}] },
     { text_en: "Which occasion?", text_ar: "أي مناسبة؟", icon: "fa-calendar-alt", options: [{text_en:"Daily/Casual",text_ar:"يومي",cat:"Fresh",icon:"fa-sun"},{text_en:"Date Night",text_ar:"ليلة رومانسية",cat:"Romantic",icon:"fa-moon"},{text_en:"Business/Confidence",text_ar:"عمل/ثقة",cat:"Strong",icon:"fa-briefcase"},{text_en:"Gala/Events",text_ar:"حفلات راقية",cat:"Luxury",icon:"fa-star"}] },
@@ -401,7 +695,7 @@
   }
   function openQuiz() { quizStep=0; quizScores={ Fresh:0, Romantic:0, Strong:0, Luxury:0 }; quizSelected=[]; renderQuiz(); document.getElementById('quizModal').style.display='flex'; }
 
-  // Event Listeners
+  // ربط الأحداث
   document.getElementById('searchInput').addEventListener('input', renderProducts);
   document.getElementById('cartBtnNav').addEventListener('click',()=>{ updateCartUI(); document.getElementById('cartModal').style.display='flex'; });
   document.getElementById('closeCartModal').addEventListener('click',()=>document.getElementById('cartModal').style.display='none');
@@ -421,6 +715,47 @@
   document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
   document.getElementById('quizHeroBtn').addEventListener('click', openQuiz);
 
+  // أحداث القائمة الجانبية
+  const hamburger = document.getElementById('hamburgerBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeSide = document.getElementById('closeSideMenu');
+  function openSideMenu() { sideMenu.classList.add('open'); }
+  function closeSideMenu() { sideMenu.classList.remove('open'); }
+  hamburger.addEventListener('click', openSideMenu);
+  closeSide.addEventListener('click', closeSideMenu);
+  // ربط أحداث الروابط في القائمة الجانبية
+  document.querySelectorAll('.side-nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sectionId = link.getAttribute('data-section');
+      const element = document.getElementById(sectionId);
+      if(element) element.scrollIntoView({ behavior: 'smooth' });
+      closeSideMenu();
+    });
+  });
+  // ربط البحث الجانبي
+  const sideSearch = document.getElementById('sideSearchInput');
+  sideSearch.addEventListener('input', (e) => {
+    document.getElementById('searchInput').value = e.target.value;
+    renderProducts();
+  });
+  // ربط أزرار اللغة الجانبية
+  document.querySelectorAll('.side-lang').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.dataset.lang);
+      closeSideMenu();
+    });
+  });
+  // ربط زر المفضلة الجانبي
+  document.getElementById('sideWishlistBtn').addEventListener('click', () => {
+    let wishlistItems = products.filter(p=>wishlist.includes(p.id));
+    const container = document.getElementById('wishlistItems');
+    if(wishlistItems.length === 0) { container.innerHTML = '<p>المفضلة فارغة</p>'; }
+    else { container.innerHTML = wishlistItems.map(p=>`<div style="display:flex; justify-content:space-between; margin:8px 0;">${p.name} - ${p.price} د.ج <button class="btn-outline" onclick="addToCart(${p.id}); document.getElementById('wishlistModal').style.display='none';">أضف إلى السلة</button></div>`).join(''); }
+    document.getElementById('wishlistModal').style.display='flex';
+    closeSideMenu();
+  });
+
   window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) navbar.classList.add('scrolled');
@@ -439,13 +774,20 @@
       document.querySelector('.hero-content p').innerHTML = 'اكتشف أرقى العطور العالمية والنيش المصممة خصيصاً للخبراء.';
       document.getElementById('quizHeroBtn').innerHTML = '<i class="fas fa-magic"></i> اكتشف عطرك المثالي';
       document.querySelector('#searchInput').placeholder = 'ابحث عن عطر...';
+      if(sideSearch) sideSearch.placeholder = 'ابحث عن عطر...';
     } else {
       document.querySelector('.hero-content h1').innerHTML = 'Where Scent <br>Becomes <span class="gold-accent">Identity</span>';
       document.querySelector('.hero-content p').innerHTML = 'Discover the finest niche and designer fragrances curated for the connoisseur.';
       document.getElementById('quizHeroBtn').innerHTML = '<i class="fas fa-magic"></i> Find Your Scent';
       document.querySelector('#searchInput').placeholder = 'Search perfume...';
+      if(sideSearch) sideSearch.placeholder = 'Search perfume...';
     }
     document.querySelectorAll('.nav-link').forEach(link => {
+      if(link.getAttribute('data-section') === 'home') link.innerText = lang==='en'?'Home':'الرئيسية';
+      if(link.getAttribute('data-section') === 'products') link.innerText = lang==='en'?'Collection':'المجموعة';
+      if(link.getAttribute('data-section') === 'story') link.innerText = lang==='en'?'Story':'القصة';
+    });
+    document.querySelectorAll('.side-nav-link').forEach(link => {
       if(link.getAttribute('data-section') === 'home') link.innerText = lang==='en'?'Home':'الرئيسية';
       if(link.getAttribute('data-section') === 'products') link.innerText = lang==='en'?'Collection':'المجموعة';
       if(link.getAttribute('data-section') === 'story') link.innerText = lang==='en'?'Story':'القصة';
